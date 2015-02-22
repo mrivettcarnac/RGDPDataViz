@@ -545,12 +545,12 @@
       	
       	var RGDPArray = []; //This is the big array. Will use the "for" loop to put the small array, dateAndValueArray, into the bigger array.  
       	
-      	for(var i=0; i<jsonRGPData.observations.length; i++){
+      	for(var i=0; i<jsonRGDPData.observations.length; i++){
 			
-			var dateAndValueArray = [] //This is the small array. It will hold each set of date and value
+			var dateAndValueArray = []; //This is the small array. It will hold each set of date and value
 		
-			dateAndValueArray.push(jsonRGDPData.observation[i].date);
-			dateAndValueArray.push(Number(jsonRGDPData.observation[i].value)); //casted value from a string to a number so it can be read by column item 1
+			dateAndValueArray.push(jsonRGDPData.observations[i].date);
+			dateAndValueArray.push(Number(jsonRGDPData.observations[i].value)); //casted value from a string to a number so it can be read by column item 1
 		
 			RGDPArray.push(dateAndValueArray); //pushing small array set into the big array set.
 			
@@ -565,7 +565,6 @@
 
         // Set chart options
         var options = {'title':'The Real Gross Domestic Product Incresed Steadily Since 1929',
-                       'subtitle' : 'Data taken from the St. Louis Federal Reserve'
                        'width':1200,
                        'height':900,
                        'legend' : {position: 'right'},
