@@ -540,6 +540,15 @@
       // instantiates the pie chart, passes in the data and
       // draws it.
       function drawChart() {
+      	
+      	// Starting a for loop to pull array of arrays from the obsetvations in jsonRGDPData
+      	
+      
+      	for(var i=0; i<jsonRGPData.observations.length; i++){
+		jsonRGDPData.observation[i].date
+		jsonRGDPData.observation[i].value
+		};
+
 
         // Create the data table.
         var data = new google.visualization.DataTable();
