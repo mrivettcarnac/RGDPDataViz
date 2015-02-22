@@ -543,15 +543,18 @@
       	
       	// Starting a for loop to pull array of arrays from the obsetvations in jsonRGDPData
       	
-      
+      	var RGDPArray = []; //This is the big array. Will use the "for" loop to put the small array, dateAndValueArray, into the bigger array.  
+      	
       	for(var i=0; i<jsonRGPData.observations.length; i++){
 			
-			var dateAndValueArray = [] //This will hold each set of date and value
+			var dateAndValueArray = [] //This is the small array. It will hold each set of date and value
 		
 			dateAndValueArray.push(jsonRGDPData.observation[i].date);
 			dateAndValueArray.push(Number(jsonRGDPData.observation[i].value)); //casted value from a string to a number so it can be read by column item 1
 		
-		};
+			RGDPArray.push(dateAndValueArray); //pushing small array set into the big array set.
+			
+		}; //end of the "for" loop.
 
 
         // Create the data table.
