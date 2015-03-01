@@ -5,3 +5,22 @@
 #chart_div {
 	width 1200 px
 }
+
+.col-sm-1{
+	background-color:blue;
+	font-family: arial;
+	font-size: 10px
+}
+
+.col-md-4{
+	background-color:yellow;
+	font-family: arial;
+	font-size: 10px
+}
+
+
+.col-md-8{
+	background-color:green;
+	font-family: arial;
+	font-size: 10px
+}
