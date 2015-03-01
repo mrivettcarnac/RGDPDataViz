@@ -1,13 +1,9 @@
  // The code below is taken from: https://developers.google.com/chart/interactive/docs/quick_start
  
-  var trendLineStyle = { 
- 	  		type: 'linear',
-            color: 'green',
-            lineWidth: 3,
-            opacity: 0.3,
-            showR2: true,
-            visibleInLegend: true
-         } //end of trendLineStyle style definition
+  var gridLineStyle = { 
+ 	  		count: 10,
+            color: 'green'
+         }; //end of gridLineStyle style definition
  
  // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
@@ -43,17 +39,20 @@
         data.addRows(RGDPArray);
 
         // Set chart options
-        var options = {'title':'The Real Gross Domestic Product Increased Steadily Since 1929',
-                       'width':1200,
-                       'height':900,
-                       'bar' : { groupWidth: '61.8%' },
-                       'trendlines': {
-                       	0 :{}
-                       } //Draw trendline 0
+        var options = {title:'The Real Gross Domestic Product Increased Steadily Since 1929',
+                       width: 1200,
+                       height: 900,
+                       bar: { groupWidth: '61.8%' },
+                       vAxis: {
+                       	title: 'Real Gross Domestic Product'
+                       },
+                       hAxis: {
+                       	title: 'Date',
+                       	gridlines: {}
+                       }
                       }; //End of option
 
-		options.trendlines[0] = trendLineStyle; //set the look of the trend line with var trendLineStyle
-		
+		options.hAxis.gridlines = gridLineStyle
 		
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
