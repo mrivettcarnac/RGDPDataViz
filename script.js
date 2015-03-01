@@ -1,7 +1,18 @@
  // The code below is taken from: https://developers.google.com/chart/interactive/docs/quick_start
  
+ 
+  var trendLineStyle = { 
+	  		 type: 'linear',
+             color: 'green',
+             lineWidth: 3,
+             opacity: 0.3,
+             showR2: true,
+             visibleInLegend: true
+          }; //end of trendLineStyle style definition
+ 
+ 
   var gridLineStyle = { 
- 	  		count: 10,
+ 	  		count: jsonRGDPData.observations.length,
             color: 'green'
          }; //end of gridLineStyle style definition
  
@@ -24,7 +35,7 @@
 			
 			var dateAndValueArray = []; //This is the small array. It will hold each set of date and value
 		
-			dateAndValueArray.push(jsonRGDPData.observations[i].date);
+			dateAndValueArray.push(new Date(jsonRGDPData.observations[i].date));
 			dateAndValueArray.push(Number(jsonRGDPData.observations[i].value)); //casted value from a string to a number so it can be read by column item 1
 		
 			RGDPArray.push(dateAndValueArray); //pushing small array set into the big array set.
@@ -34,7 +45,7 @@
          
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Date');
+        data.addColumn('date', 'Date');
         data.addColumn('number', 'Dollars');
         data.addRows(RGDPArray);
 
@@ -43,6 +54,9 @@
                        width: 1200,
                        height: 900,
                        bar: { groupWidth: '61.8%' },
+                       trendlines: {
+                        	0 :{}
+                        }, 
                        vAxis: {
                        	title: 'Real Gross Domestic Product'
                        },
@@ -52,6 +66,7 @@
                        }
                       }; //End of option
 
+		options.trendlines[0] = trendLineStyle;
 		options.hAxis.gridlines = gridLineStyle
 		
         // Instantiate and draw our chart, passing in some options.
